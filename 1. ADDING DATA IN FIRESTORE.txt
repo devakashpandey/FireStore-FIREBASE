@@ -1,0 +1,36 @@
+import './App.css';
+import {  getFirestore,  collection, addDoc, } from "firebase/firestore";   // getFirestore,  collection, addDoc,
+import { app } from "./components/firebase";
+
+const firestore = getFirestore(app)  // instance of firestore
+
+function App() {
+ 
+// adding data in collection & documents -------------->>
+
+ const writeData = async () => {
+  let result = await addDoc(collection(firestore,"cities"), {  // collection name "cities"
+      name: "ara",
+      pin:802301,
+      lat: 123,
+      long: 345
+   })
+
+   alert("Data added successfully!!")
+ }
+
+  return (
+    <>
+    <div className="main-div">
+      <div className="div">
+        <h1>CRUD OPERATION OF DATA IN CLOUD FIRESTORE</h1><br/>
+
+        <button onClick={writeData}>Add Data</button><br/>
+
+        </div>
+    </div>
+    </>
+  );
+}
+
+export default App;

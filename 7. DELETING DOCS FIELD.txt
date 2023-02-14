@@ -1,0 +1,35 @@
+import './App.css';
+import {  getFirestore, doc,  getDoc, updateDoc,deleteField} from "firebase/firestore";
+import { app } from "./components/firebase";
+
+const firestore = getFirestore(app)  // instance of firestore
+
+function App() {
+
+ // deleting fields in collection & documents -------------->>
+
+ let deletingField = async () => {
+  const deleteRef = doc(firestore, "cities/gdgkJS5YZD0UZ9qRSKLK")
+     await updateDoc(deleteRef, {
+         long: deleteField()
+     })
+
+     alert("Field deleted successfully!!")
+}
+
+
+  return (
+    <>
+    <div className="main-div">
+      <div className="div">
+        <h1>CRUD OPERATION OF DATA IN CLOUD FIRESTORE</h1><br/>
+  
+        <button onClick={deletingField}>Delete Field</button>
+        
+        </div>
+    </div>
+    </>
+  );
+}
+
+export default App;

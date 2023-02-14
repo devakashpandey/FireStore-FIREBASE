@@ -1,0 +1,33 @@
+import './App.css';
+import { getFirestore,  doc,  deleteDoc } from "firebase/firestore";
+import { app } from "./components/firebase";
+
+const firestore = getFirestore(app)  // instance of firestore
+
+function App() {
+ 
+ // deleting docs in collection & documents -------------->>
+
+
+ let deletingData = async () => {
+  const deleteRef = doc(firestore, "/cities/gdgkJS5YZD0UZ9qRSKLK/")
+      await deleteDoc(deleteRef)
+
+     alert("Data / Docs deleted successfully!!")
+}
+
+  return (
+    <>
+    <div className="main-div">
+      <div className="div">
+        <h1>CRUD OPERATION OF DATA IN CLOUD FIRESTORE</h1><br/>
+
+        <button onClick={deletingData}>Delete Data</button><br/>
+        
+        </div>
+    </div>
+    </>
+  );
+}
+
+export default App;

@@ -1,0 +1,35 @@
+import './App.css';
+import {  getFirestore, doc, updateDoc,  } from "firebase/firestore";
+import { app } from "./components/firebase";
+
+const firestore = getFirestore(app)  // instance of firestore
+
+function App() {
+
+ // updating data of collection & documents -------------->>
+
+ let updatingData = async () => {
+   const docref = doc(firestore, "cities", "gdgkJS5YZD0UZ9qRSKLK" )
+      await updateDoc( docref, {
+        name: "patna",
+        pin: 800001
+      })
+
+      alert("Data updated successfully!!")
+ }
+
+  return (
+    <>
+    <div className="main-div">
+      <div className="div">
+        <h1>CRUD OPERATION OF DATA IN CLOUD FIRESTORE</h1><br/>
+      
+        <button onClick={updatingData}>Update Data</button><br/>
+        
+        </div>
+    </div>
+    </>
+  );
+}
+
+export default App;

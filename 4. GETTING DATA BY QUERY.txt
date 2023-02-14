@@ -1,0 +1,36 @@
+import './App.css';
+import {   getFirestore,  collection, query, where, getDocs, } from "firebase/firestore";
+import { app } from "./components/firebase";
+
+const firestore = getFirestore(app)  // instance of firestore
+
+function App() {
+
+ // getting data of collection & documents by query -------------->>
+
+ const getDocumentByQuery = async () =>{
+   const collectionRef =  collection(firestore, 'cities');
+   const myQuery = query(collectionRef, where("pin", "==", 802301));
+
+   const snapshot  = await getDocs(myQuery);
+   snapshot.forEach((data) => console.log(data.data()))
+    
+   alert("Data fetch successfully!!")
+ }
+
+
+  return (
+    <>
+    <div className="main-div">
+      <div className="div">
+        <h1>CRUD OPERATION OF DATA IN CLOUD FIRESTORE</h1><br/>
+
+        <button onClick={getDocumentByQuery}>Get Data By Query</button><br/>
+        
+        </div>
+    </div>
+    </>
+  );
+}
+
+export default App;

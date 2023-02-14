@@ -1,0 +1,32 @@
+import './App.css';
+import {  getFirestore, doc , getDoc } from "firebase/firestore";  // doc , getDoc
+import { app } from "./components/firebase";
+
+const firestore = getFirestore(app)  // instance of firestore
+
+function App() {
+
+ // getting / read data of collection & documents (if you know the id) -------------->>
+
+ const getDocument = async () =>{
+   const ref = doc(firestore,"cities" , "gdgkJS5YZD0UZ9qRSKLK")
+   const snap = await getDoc(ref);
+
+   console.log(snap.data)
+ }
+
+  return (
+    <>
+    <div className="main-div">
+      <div className="div">
+        <h1>CRUD OPERATION OF DATA IN CLOUD FIRESTORE</h1><br/>
+    
+        <button onClick={getDocument}>Get Data</button><br/>
+  
+        </div>
+    </div>
+    </>
+  );
+}
+
+export default App;

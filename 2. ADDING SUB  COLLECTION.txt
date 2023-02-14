@@ -1,0 +1,34 @@
+import './App.css';
+import { getFirestore, collection, addDoc } from "firebase/firestore";   // addDoc
+import { app } from "./components/firebase";
+
+const firestore = getFirestore(app)  // instance of firestore
+
+function App() {
+
+ // adding subcollection ----------------------->>>
+
+ const addSubCollection = async () =>{
+     let results = await addDoc(collection(firestore, "cities/gdgkJS5YZD0UZ9qRSKLK/places"),{   // cities> adadaad > places
+          name:" ramna mandir",
+          description: "hanuman mandir",
+     })
+     alert("Data added successfully!!")
+ }
+
+
+  return (
+    <>
+    <div className="main-div">
+      <div className="div">
+        <h1>CRUD OPERATION OF DATA IN CLOUD FIRESTORE</h1><br/>
+
+        <button onClick={addSubCollection}>Add SubCollec Data</button><br/>
+
+        </div>
+    </div>
+    </>
+  );
+}
+
+export default App;
